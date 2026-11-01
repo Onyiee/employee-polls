@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchInitialData } from '../../app/thunks';
 
 const initialState = {};
 
@@ -21,6 +22,12 @@ const usersSlice = createSlice({
 
             state[authedUser].answers[qid] = answer;
         },
+    },
+
+    extraReducers: (builder) => {
+        builder.addCase(fetchInitialData.fulfilled, (state, action) => {
+            return action.payload.users;
+        });
     },
 });
 
