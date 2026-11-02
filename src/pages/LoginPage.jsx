@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Navigate } from "react-router-dom";
 import { login } from '../features/auth/authSlice';
 
 function LoginPage() {
+    const authedUser = useSelector((state) => state.auth.authedUser);
     const dispatch = useDispatch();
 
     const users = useSelector((state)=> state.users);
@@ -23,6 +25,9 @@ function LoginPage() {
 
         dispatch(login(selectedUser));
     };
+    if (authedUser) {
+        return <Navigate to="/" replace />;
+    }
 
     return (
         <div>
