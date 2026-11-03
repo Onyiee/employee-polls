@@ -42,6 +42,8 @@ function HomePage() {
 
             <button onClick={handleLogout}>Logout</button>
 
+            <Link to="/add">Create New Poll</Link>
+
             <div>
                 <button onClick={()=> setActiveTab('unanswered')}>
                     Unanswered
