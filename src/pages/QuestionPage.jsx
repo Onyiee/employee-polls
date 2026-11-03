@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { _saveQuestionAnswer } from '../../_DATA.js';
@@ -7,6 +7,7 @@ import { addQuestionAnswer } from '../features/questions/questionsSlice';
 import { addUserAnswer } from '../features/users/usersSlice';
 
 function QuestionPage() {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { question_id } = useParams();
     const [selectedOption, setSelectedOption] = useState('');
@@ -48,6 +49,14 @@ function QuestionPage() {
     if (hasAnswered) {
         return (
             <div className="min-h-screen bg-gray-50 px-4 py-12">
+                <button
+                    type="button"
+                    onClick={() => navigate('/home')}
+                    className="mb-8 flex items-center gap-2 text-sm font-medium text-gray-500 transition hover:text-blue-600"
+                >
+                    <span aria-hidden="true">←</span>
+                    Back to Dashboard
+                </button>
                 <div className="mx-auto max-w-2xl rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
                     <div className="mb-8 text-center">
                         <img
@@ -153,6 +162,14 @@ function QuestionPage() {
     return (
         <div className="min-h-screen bg-gray-50 px-4 py-12">
             <div className="mx-auto max-w-2xl rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
+                <button
+                    type="button"
+                    onClick={() => navigate('/home')}
+                    className="mb-8 flex items-center gap-2 text-sm font-medium text-gray-500 transition hover:text-blue-600"
+                >
+                    <span aria-hidden="true">←</span>
+                    Back to Dashboard
+                </button>
 
                 <div className="mb-8 text-center">
                     <img

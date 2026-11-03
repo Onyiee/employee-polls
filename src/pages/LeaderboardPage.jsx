@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 
 function LeaderboardPage() {
+    const navigate = useNavigate();
     const users = useSelector((state)=> state.users);
 
     const leaderboard = Object.values(users)
@@ -20,6 +22,16 @@ function LeaderboardPage() {
     return (
         <div className="min-h-screen bg-gray-50 px-4 py-10">
             <div className="mx-auto max-w-3xl">
+
+                <button
+                    type="button"
+                    onClick={() => navigate('/home')}
+                    className="mb-8 flex items-center gap-2 text-sm font-medium text-gray-500 transition hover:text-blue-600"
+                >
+                    <span aria-hidden="true">←</span>
+                    Back to Dashboard
+                </button>
+
                 <h1 className="mb-8 text-center text-4xl font-bold text-gray-900">
                     Leaderboard
                 </h1>
