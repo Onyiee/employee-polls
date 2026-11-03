@@ -6,6 +6,7 @@ import HomePage from '../pages/HomePage';
 import QuestionPage from '../pages/QuestionPage';
 import ProtectedRoute from './ProtectedRoute';
 import NewQuestionPage from "../pages/NewQuestionPage.jsx";
+import LeaderboardPage from "../pages/LeaderboardPage";
 
 function AppRouter() {
     return (
@@ -21,6 +22,7 @@ function AppRouter() {
                         element={<QuestionPage />}
                     />
                     <Route path="/add" element={<NewQuestionPage/>} />
+                    <Route path="/leaderboard" element={<LeaderboardPage/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>
