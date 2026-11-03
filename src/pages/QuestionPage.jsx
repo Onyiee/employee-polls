@@ -6,16 +6,16 @@ import { _saveQuestionAnswer } from '../../_DATA.js';
 import { addQuestionAnswer } from '../features/questions/questionsSlice';
 import { addUserAnswer } from '../features/users/usersSlice';
 
-function QuestionPage(){
+function QuestionPage() {
     const dispatch = useDispatch();
-    const {question_id} = useParams();
+    const { question_id } = useParams();
     const [selectedOption, setSelectedOption] = useState('');
 
     const question = useSelector(
-        (state)=> state.questions[question_id]
+        (state) => state.questions[question_id]
     );
 
-    const users = useSelector((state)=> state.users);
+    const users = useSelector((state) => state.users);
 
     const authedUser = useSelector(
         (state) => state.auth.authedUser
@@ -32,6 +32,7 @@ function QuestionPage(){
     }
 
     const author = users[question.author];
+
     const optionOneVotes = question.optionOne.votes.length;
     const optionTwoVotes = question.optionTwo.votes.length;
     const totalVotes = optionOneVotes + optionTwoVotes;
@@ -46,44 +47,87 @@ function QuestionPage(){
 
     if (hasAnswered) {
         return (
-            <div>
-                <h1>Poll by {author.name}</h1>
-                <h2>Would You Rather</h2>
-
-                <div>
-                    <h3>{question.optionOne.text}</h3>
-                    <p>{optionOneVotes} {optionOneVotes === 1 ? 'vote' : 'votes'}</p>
-                    <p>{optionOnePercentage.toFixed(1)}%</p>
-                    <progress
-                        value={optionOnePercentage}
-                        max="100"
+            <div className="min-h-screen bg-gray-50 px-4 py-12">
+                <div className="mx-auto max-w-2xl rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
+                    <div className="mb-8 text-center">
+                        <img
+                            src={author.avatarURL}
+                            alt={`${author.name}'s avatar`}
+                            className="mx-auto mb-4 h-16 w-16 rounded-full object-cover"
                         />
-                    {hasAnswered === 'optionOne' && (
-                        <p>Your vote</p>
-                    )}
-                </div>
 
-                <p>OR</p>
+                        <h1 className="mb-2 text-3xl font-bold text-gray-900">
+                            Poll by {author.name}
+                        </h1>
 
-                <div>
-                    <h3>{question.optionTwo.text}</h3>
-                    <p>{optionTwoVotes} {optionTwoVotes === 1 ? 'vote' : 'votes'}</p>
-                    <p>{optionTwoPercentage.toFixed(1)}%</p>
-                    <progress
-                        value={optionTwoPercentage}
-                        max="100"
+                        <h2 className="text-lg font-medium text-gray-500">
+                            Would You Rather
+                        </h2>
+                    </div>
+
+                    <div className="rounded-xl border border-gray-200 bg-gray-50 p-6">
+                        <h3 className="mb-4 text-lg font-semibold text-gray-800">
+                            {question.optionOne.text}
+                        </h3>
+
+                        <p className="mb-1 text-sm text-gray-600">
+                            {optionOneVotes} {optionOneVotes === 1 ? 'vote' : 'votes'}
+                        </p>
+
+                        <p className="mb-3 text-sm font-medium text-gray-700">
+                            {optionOnePercentage.toFixed(1)}%
+                        </p>
+
+                        <progress
+                            className="h-3 w-full overflow-hidden rounded-full"
+                            value={optionOnePercentage}
+                            max="100"
                         />
-                    {hasAnswered === 'optionTwo' && (
-                        <p>Your vote</p>
-                    )}
-                </div>
 
-                <p>Total votes: {totalVotes}</p>
+                        {hasAnswered === 'optionOne' && (
+                            <p className="mt-3 text-sm font-semibold text-blue-600">
+                                Your vote
+                            </p>
+                        )}
+                    </div>
+
+                    <p className="my-4 text-center font-semibold text-gray-400">
+                        OR
+                    </p>
+
+                    <div className="rounded-xl border border-gray-200 bg-gray-50 p-6">
+                        <h3 className="mb-4 text-lg font-semibold text-gray-800">
+                            {question.optionTwo.text}
+                        </h3>
+
+                        <p className="mb-1 text-sm text-gray-600">
+                            {optionTwoVotes} {optionTwoVotes === 1 ? 'vote' : 'votes'}
+                        </p>
+
+                        <p className="mb-3 text-sm font-medium text-gray-700">
+                            {optionTwoPercentage.toFixed(1)}%
+                        </p>
+
+                        <progress
+                            className="h-3 w-full overflow-hidden rounded-full"
+                            value={optionTwoPercentage}
+                            max="100"
+                        />
+
+                        {hasAnswered === 'optionTwo' && (
+                            <p className="mt-3 text-sm font-semibold text-blue-600">
+                                Your vote
+                            </p>
+                        )}
+                    </div>
+
+                    <p className="mt-6 text-center font-semibold text-gray-700">
+                        Total votes: {totalVotes}
+                    </p>
+                </div>
             </div>
         );
     }
-
-
 
     const handleVote = async () => {
         if (!selectedOption) {
@@ -107,41 +151,82 @@ function QuestionPage(){
     };
 
     return (
-       <div>
-           <div>
-               <label>
-                   <input
-                       type="radio"
-                       name="pollOption"
-                       value="optionOne"
-                       checked={selectedOption === 'optionOne'}
-                       onChange={(e) => setSelectedOption(e.target.value)}
-                   />
-                   {question.optionOne.text}
-               </label>
+        <div className="min-h-screen bg-gray-50 px-4 py-12">
+            <div className="mx-auto max-w-2xl rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
 
-               <p>OR</p>
+                <div className="mb-8 text-center">
+                    <img
+                        src={author.avatarURL}
+                        alt={`${author.name}'s avatar`}
+                        className="mx-auto mb-4 h-16 w-16 rounded-full object-cover"
+                    />
 
-               <label>
-                   <input
-                       type="radio"
-                       name="pollOption"
-                       value="optionTwo"
-                       checked={selectedOption === 'optionTwo'}
-                       onChange={(e) => setSelectedOption(e.target.value)}
-                   />
-                   {question.optionTwo.text}
-               </label>
-           </div>
+                    <h1 className="mb-2 text-3xl font-bold text-gray-900">
+                        Poll by {author.name}
+                    </h1>
 
-           <button
-               onClick={handleVote}
-               disabled={!selectedOption}
-           >
-               Submit Vote
-           </button>
-       </div>
+                    <h2 className="text-lg font-medium text-gray-500">
+                        Would You Rather
+                    </h2>
+                </div>
 
+                <div className="space-y-4">
+                    <label
+                        className={`flex cursor-pointer items-center gap-4 rounded-xl border p-6 transition ${
+                            selectedOption === 'optionOne'
+                                ? 'border-blue-500 bg-blue-50'
+                                : 'border-gray-200 bg-gray-50 hover:border-gray-300'
+                        }`}
+                    >
+                        <input
+                            type="radio"
+                            name="pollOption"
+                            value="optionOne"
+                            checked={selectedOption === 'optionOne'}
+                            onChange={(e) => setSelectedOption(e.target.value)}
+                            className="h-5 w-5 accent-blue-600"
+                        />
+
+                        <span className="font-medium text-gray-800">
+              {question.optionOne.text}
+            </span>
+                    </label>
+
+                    <p className="text-center font-semibold text-gray-400">
+                        OR
+                    </p>
+
+                    <label
+                        className={`flex cursor-pointer items-center gap-4 rounded-xl border p-6 transition ${
+                            selectedOption === 'optionTwo'
+                                ? 'border-blue-500 bg-blue-50'
+                                : 'border-gray-200 bg-gray-50 hover:border-gray-300'
+                        }`}
+                    >
+                        <input
+                            type="radio"
+                            name="pollOption"
+                            value="optionTwo"
+                            checked={selectedOption === 'optionTwo'}
+                            onChange={(e) => setSelectedOption(e.target.value)}
+                            className="h-5 w-5 accent-blue-600"
+                        />
+
+                        <span className="font-medium text-gray-800">
+              {question.optionTwo.text}
+            </span>
+                    </label>
+                </div>
+
+                <button
+                    onClick={handleVote}
+                    disabled={!selectedOption}
+                    className="mt-8 w-full rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-gray-300"
+                >
+                    Submit Vote
+                </button>
+            </div>
+        </div>
     );
 }
 
