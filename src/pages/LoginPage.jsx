@@ -26,7 +26,7 @@ function LoginPage() {
         dispatch(login(selectedUser));
     };
     if (authedUser) {
-        return <Navigate to="/" replace />;
+        return <Navigate to="/home" replace />;
     }
 
     return (
