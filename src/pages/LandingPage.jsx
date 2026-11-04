@@ -78,7 +78,7 @@ function LandingPage() {
             </section>
 
             <footer className="bg-gray-50 px-6 py-5 text-center text-sm text-gray-400">
-                © {new Date().getFullYear()} Employee Polls. All rights reserved.
+                &copy; {new Date().getFullYear()} Employee Polls. All rights reserved.
             </footer>
         </main>
     );
