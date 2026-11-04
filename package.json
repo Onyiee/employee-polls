@@ -9,7 +9,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "start:test": "jest"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.13.0",
