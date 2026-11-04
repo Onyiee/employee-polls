@@ -13,8 +13,8 @@ describe('_saveQuestion',  ()=>{
         expect(result.author).toEqual(question.author);
         expect(result.optionOne.text).toEqual(question.optionOneText);
         expect(result.optionTwo.text).toEqual(question.optionTwoText);
-        expect(result.id).toBeDefined();
-        expect(result.timestamp).toBeDefined();
+        expect(typeof result.id).toEqual('string');
+        expect(typeof result.timestamp).toEqual('number');
         expect(result.optionOne.votes).toEqual([]);
         expect(result.optionTwo.votes).toEqual([]);
     });
@@ -30,9 +30,14 @@ describe('_saveQuestion',  ()=>{
 
 describe('_saveQuestionAnswer',  ()=>{
     it(`should successfully save a user's answer`, async ()=>{
+        const newQuestion = await _saveQuestion({
+            author: 'sarahedo',
+            optionOneText: 'Build our new application with Javascript',
+            optionTwoText: 'Build our new application with Typescript',
+        })
         const answer = {
             authedUser: 'sarahedo',
-            qid: '8xf0y6ziyjabvozdd253nd',
+            qid: newQuestion.id,
             answer: 'optionOne'
         }
     const result = await _saveQuestionAnswer(answer);
