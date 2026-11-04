@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { _saveQuestionAnswer } from '../../_DATA.js';
 import { addQuestionAnswer } from '../features/questions/questionsSlice';
 import { addUserAnswer } from '../features/users/usersSlice';
+import { ArrowLeft } from 'lucide-react';
 
 function QuestionPage() {
     const navigate = useNavigate();
@@ -54,7 +55,7 @@ function QuestionPage() {
                     onClick={() => navigate('/home')}
                     className="mb-8 flex items-center gap-2 text-sm font-medium text-gray-500 transition hover:text-blue-600"
                 >
-                    <span aria-hidden="true">←</span>
+                    <ArrowLeft size={20} aria-hidden="true" />
                     Back to Dashboard
                 </button>
                 <div className="mx-auto max-w-2xl rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
@@ -167,7 +168,7 @@ function QuestionPage() {
                     onClick={() => navigate('/home')}
                     className="mb-8 flex items-center gap-2 text-sm font-medium text-gray-500 transition hover:text-blue-600"
                 >
-                    <span aria-hidden="true">←</span>
+                    <ArrowLeft size={20} aria-hidden="true" />
                     Back to Dashboard
                 </button>
 

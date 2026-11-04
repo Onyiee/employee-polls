@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 
 function LeaderboardPage() {
     const navigate = useNavigate();
@@ -28,7 +29,7 @@ function LeaderboardPage() {
                     onClick={() => navigate('/home')}
                     className="mb-8 flex items-center gap-2 text-sm font-medium text-gray-500 transition hover:text-blue-600"
                 >
-                    <span aria-hidden="true">←</span>
+                    <ArrowLeft size={20} aria-hidden="true" />
                     Back to Dashboard
                 </button>
 
