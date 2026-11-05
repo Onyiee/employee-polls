@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
 import { _saveQuestion } from '../../_DATA.js';
-import { addQuestion } from '../features/questions/questionsSlice';
+import { addQuestion } from '../features/questions/questionsSlice.ts';
 import { addUserQuestion } from '../features/users/usersSlice';
 
 function NewQuestionPage() {

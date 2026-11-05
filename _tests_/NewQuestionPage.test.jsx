@@ -7,7 +7,7 @@ import { store } from '../src/app/store';
 import NewQuestionPage from '../src/pages/NewQuestionPage';
 import { login, logout } from '../src/features/auth/authSlice';
 import { setUsers } from '../src/features/users/usersSlice';
-import { setQuestions } from '../src/features/questions/questionsSlice';
+import { setQuestions } from '../src/features/questions/questionsSlice.ts';
 import { _saveQuestion, _getUsers, _getQuestions } from '../_DATA.js';
 
 jest.mock('../_DATA.js', () => {

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { _saveQuestionAnswer } from '../../_DATA.js';
-import { addQuestionAnswer } from '../features/questions/questionsSlice';
+import { addQuestionAnswer } from '../features/questions/questionsSlice.ts';
 import { addUserAnswer } from '../features/users/usersSlice';
 import { ArrowLeft } from 'lucide-react';
 import NotFoundPage from "./NotFoundPage.jsx";

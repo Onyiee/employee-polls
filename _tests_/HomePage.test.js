@@ -6,7 +6,7 @@ import {store} from "../src/app/store.js";
 import HomePage from "../src/pages/HomePage.jsx";
 import { _getUsers, _getQuestions } from '../_DATA.js';
 import { setUsers } from '../src/features/users/usersSlice';
-import { setQuestions } from '../src/features/questions/questionsSlice';
+import { setQuestions } from '../src/features/questions/questionsSlice.ts';
 import {login, logout} from '../src/features/auth/authSlice';
 
 function renderWithProviders(ui){
