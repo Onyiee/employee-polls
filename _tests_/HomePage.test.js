@@ -1,4 +1,4 @@
-import {render, fireEvent, getAllByText} from '@testing-library/react';
+import {render, fireEvent} from '@testing-library/react';
 import {Provider} from "react-redux";
 import {MemoryRouter} from "react-router-dom";
 import {describe, it, expect} from "@jest/globals";

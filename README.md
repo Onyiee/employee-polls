@@ -17,6 +17,7 @@ The project was built as part of the Udacity React Nanodegree programme, with a 
 
 - React
 - JavaScript
+- TypeScript
 - Redux Toolkit
 - React Redux
 - React Router
@@ -59,7 +60,7 @@ Make sure you have the following installed:
 4. Start the development server:
 
    ```bash
-   npm run start
+   npm start
    ```
 
 5. Open the local URL displayed in your terminal to access the application.
