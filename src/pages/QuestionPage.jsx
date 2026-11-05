@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { _saveQuestionAnswer } from '../../_DATA.js';
 import { addQuestionAnswer } from '../features/questions/questionsSlice';
 import { addUserAnswer } from '../features/users/usersSlice';
 import { ArrowLeft } from 'lucide-react';
+import NotFoundPage from "./NotFoundPage.jsx";
 
 function QuestionPage() {
     const navigate = useNavigate();
@@ -24,7 +25,7 @@ function QuestionPage() {
     );
 
     if (!question) {
-        return <p>Question not found.</p>;
+        return <NotFoundPage />;
     }
 
     const currentUser = users[authedUser];
